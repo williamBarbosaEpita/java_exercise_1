@@ -11,16 +11,39 @@ import java.util.stream.Stream;
 import java.util.Map.Entry;
 
 
+
+
 public class Launcher {
 
     public static void main(String args[]) {
         Scanner scanner;
         scanner = new Scanner(System.in);
         System.out.println("Hi, welcome to the Jungle");
-        String userText = scanner.nextLine();
-        while (!userText.equals("quit")) {
-            if (userText.equals("fibo")) {
-                System.out.println("Please enter a number n");
+        Command cmd = null;
+        List<Command> myCommands = new ArrayList<Command>();
+        myCommands.add(new Quit());
+        myCommands.add(new Fibo());
+        myCommands.add(new Freq());
+        String userText = "";
+        do {
+            userText = scanner.nextLine();
+            cmd = null;
+            for (Command command : myCommands) {
+                if (userText.equals(command.name())) {
+                    cmd = command;
+                    break;
+                }
+            }
+            if (cmd == null)
+                System.out.println("Unknown Command");
+        }
+        while (cmd == null || !cmd.run(scanner));
+        scanner.close();
+    }
+}
+        //while (!userText.equals("quit")) {
+            //if (userText.equals("fibo")) {
+                /*System.out.println("Please enter a number n");
                 try
                 {
                     int userNumber = scanner.nextInt();
@@ -85,13 +108,8 @@ public class Launcher {
                     System.out.println("Unreadable File : ");
                     System.out.println("IoException");
                     e.printStackTrace();
-                }
-
-            }
-            else {
-                System.out.println("Unknown Command");
-            }
-            userText = scanner.nextLine();
-        }
-    }
-}
+                }*/
+           // else {
+             //   System.out.println("Unknown Command");
+            //}
+            //userText = scanner.nextLine();
