@@ -50,6 +50,7 @@ public class Launcher {
                 try
                 {
                     String content = Files.readString(filePath);
+                    content = content.toLowerCase().replaceAll("^[-a-z\n ]", "");
                     String[] words = content.split(" ");
                     List<String> strings = new ArrayList<>();
                     for (String word : words) {
