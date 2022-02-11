@@ -10,6 +10,8 @@ public class Launcher {
         myCommands.add(new Quit());
         myCommands.add(new Fibo());
         myCommands.add(new Freq());
+        myCommands.add(new Predict());
+
         String userText = "";
         do {
             userText = scanner.nextLine();
