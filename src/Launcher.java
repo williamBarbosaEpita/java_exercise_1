@@ -49,9 +49,9 @@ public class Launcher {
                 Path filePath = Paths.get(strFilePath);
                 try
                 {
-                    String content = Files.readString(filePath);
-                    content = content.toLowerCase().replaceAll("^[-a-z\n ]", "");
-                    String[] words = content.split(" ");
+                    String content = Files.readString(filePath).toLowerCase().replaceAll("[^a-z^\n^ ]", "");
+                    //content = content.toLowerCase().replaceAll("^[-a-z\n ]", "");
+                    String[] words = content.split("[ \n]");
                     List<String> strings = new ArrayList<>();
                     for (String word : words) {
                         if (!word.isBlank()) {
